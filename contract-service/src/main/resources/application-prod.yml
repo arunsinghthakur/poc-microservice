@@ -1,0 +1,33 @@
+server:
+  port: 9000
+  
+app:
+  datasource:
+    url: ${DATABASE_HOST_URL:jdbc:postgresql://localhost:5432/contract}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:guest} 
+    driverClassName: org.postgresql.Driver
+    hikari:
+      connection-timeout: ${HIKARI_CONNECTION_TIMEOUT:30000}
+      pool-name: ${HIKARI_POOL_NAME:contract-hikari-cp}
+      idle-timeout: ${HIKARI_IDLE_TIMEOUT:600000}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    
+logging:
+  path: logs
+  level:
+    root: WARN
+    com.safexpress.propeli: INFO
+  file: logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  
+
+booking:
+  service:
+    url: ${BOOKING_SERVICE_URL:http://localhost:9001}      
