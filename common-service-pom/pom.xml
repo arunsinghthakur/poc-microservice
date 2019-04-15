@@ -18,7 +18,6 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<springboot.version>2.1.4.RELEASE</springboot.version>
-		<spring-jdbc.version>5.1.6.RELEASE</spring-jdbc.version>
 		<spring-kafka.version>2.2.5.RELEASE</spring-kafka.version>
 		<hystrix.version>2.1.0.RELEASE</hystrix.version>
 		<junit.version>4.12</junit.version>
@@ -55,11 +54,6 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-batch</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-jdbc</artifactId>
 				<version>${springboot.version}</version>
 			</dependency>
 			<dependency>
