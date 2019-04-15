@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration;
+package com.safexpress.propeli.contract.integration.kafka;
 
 import java.util.Optional;
 
@@ -9,6 +9,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.integration.BookingIntegration;
 import com.safexpress.propeli.messaging.publisher.AbstractMessagePublisher;
 
 @Service("bookingKafkaIntegration")

@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration.configuration;
+package com.safexpress.propeli.contract.integration.kafka;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

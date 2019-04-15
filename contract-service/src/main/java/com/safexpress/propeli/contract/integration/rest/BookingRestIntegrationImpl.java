@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration;
+package com.safexpress.propeli.contract.integration.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.integration.BookingIntegration;
 
 @Service("bookingRestIntegration")
 public class BookingRestIntegrationImpl implements BookingIntegration {

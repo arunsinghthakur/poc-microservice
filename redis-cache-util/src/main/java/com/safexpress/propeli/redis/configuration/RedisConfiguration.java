@@ -22,7 +22,7 @@ public class RedisConfiguration {
 	private int REDIS_PORT;
 
 	@Bean
-	protected JedisConnectionFactory jedisConnectionFactory() {
+	public JedisConnectionFactory jedisConnectionFactory() {
 		RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(REDIS_HOSTNAME, REDIS_PORT);
 		JedisClientConfiguration jedisClientConfiguration = JedisClientConfiguration.builder().usePooling().build();
 		JedisConnectionFactory factory = new JedisConnectionFactory(configuration, jedisClientConfiguration);

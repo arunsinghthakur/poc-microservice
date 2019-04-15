@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration;
+package com.safexpress.propeli.contract.integration.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;

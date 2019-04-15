@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration.configuration;
+package com.safexpress.propeli.contract.integration.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Qualifier;
