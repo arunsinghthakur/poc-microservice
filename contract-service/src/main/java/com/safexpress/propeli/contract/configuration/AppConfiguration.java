@@ -70,9 +70,9 @@ public class AppConfiguration {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		HashMap<String, Object> properties = new HashMap<>();
-		properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-		properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
-		properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+		properties.put("hibernate.hbm2ddl.auto", env.getProperty("app.hibernate.hbm2ddl.auto"));
+		properties.put("hibernate.dialect", env.getProperty("app.hibernate.dialect"));
+		properties.put("hibernate.show_sql", env.getProperty("app.hibernate.show_sql"));
 		em.setJpaPropertyMap(properties);
 
 		return em;
