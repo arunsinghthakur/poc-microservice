@@ -6,23 +6,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ContractDto implements Serializable {
 	private static final long serialVersionUID = -7403552226940563012L;
-	
+
 	@JsonProperty
-	private long contractId;
-	
+	private Long contractId;
+
 	@JsonProperty
 	private String description;
 
 	public ContractDto() {
 	}
 
-	public ContractDto(long contractId, String description) {
-		super();
-		this.contractId = contractId;
-		this.description = description;
-	}
-
-	public long getContractId() {
+	public Long getContractId() {
 		return contractId;
 	}
 
@@ -30,7 +24,7 @@ public class ContractDto implements Serializable {
 		return description;
 	}
 
-	public void setContractId(long contractId) {
+	public void setContractId(Long contractId) {
 		this.contractId = contractId;
 	}
 

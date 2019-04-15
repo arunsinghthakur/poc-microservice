@@ -18,6 +18,9 @@ public class BookingKafkaIntegrationImpl implements BookingIntegration {
 
 	@Value(value = "${kafka.booking.producer.topic.name}")
 	private String bookingProducerTopic;
+	
+	@Value(value = "${kafka.booking.consumer.topic.name}")
+	private String bookingTopic;
 
 	private void sendMessage(BookingRequest bookingRequest) {
 		kafkaTemplate.send(bookingProducerTopic, bookingRequest);

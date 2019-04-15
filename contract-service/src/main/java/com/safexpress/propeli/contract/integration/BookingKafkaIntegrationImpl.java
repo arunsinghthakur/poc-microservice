@@ -1,4 +1,4 @@
-package com.safexpress.propeli.contract.integration.impl;
+package com.safexpress.propeli.contract.integration;
 
 import java.util.Optional;
 
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.safexpress.propeli.booking.domain.BookingRequest;
 import com.safexpress.propeli.contract.dao.ContractRepository;
 import com.safexpress.propeli.contract.entity.ContractEntity;
-import com.safexpress.propeli.contract.integration.BookingIntegration;
 
 @Service("bookingKafkaIntegration")
 public class BookingKafkaIntegrationImpl implements BookingIntegration {
@@ -34,7 +33,7 @@ public class BookingKafkaIntegrationImpl implements BookingIntegration {
 
 	@KafkaListener(topics = "booking-response", groupId = "booking-group")
 	public void listen(BookingRequest bookingResponse) {
-		contractRepository.save(new ContractEntity(bookingResponse.getBookingId(), bookingResponse.getDescription()));
+		contractRepository.save(new ContractEntity(bookingResponse.getDescription()));
 	}
 
 	@Override

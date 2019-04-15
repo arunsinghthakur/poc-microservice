@@ -3,24 +3,24 @@ package com.safexpress.propeli.booking.domain;
 import java.io.Serializable;
 
 public class BookingRequest implements Serializable {
-	private static final long serialVersionUID = 4262440358470589219L;
-	private long bookingId;
+	private static final Long serialVersionUID = 4262440358470589219L;
+	private Long bookingId;
 	private String description;
 
 	public BookingRequest() {
 	}
 
-	public BookingRequest(long bookingId, String description) {
+	public BookingRequest(Long bookingId, String description) {
 		super();
 		this.bookingId = bookingId;
 		this.description = description;
 	}
 
-	public long getBookingId() {
+	public Long getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(long bookingId) {
+	public void setBookingId(Long bookingId) {
 		this.bookingId = bookingId;
 	}
 

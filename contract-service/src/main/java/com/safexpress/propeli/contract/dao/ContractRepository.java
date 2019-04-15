@@ -1,8 +1,11 @@
 package com.safexpress.propeli.contract.dao;
 
-import com.safexpress.propeli.common.dao.AbstractRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.safexpress.propeli.contract.entity.ContractEntity;
 
-public interface ContractRepository extends AbstractRepository<ContractEntity, Integer> {
+@Repository
+public interface ContractRepository extends JpaRepository<ContractEntity, Long> {
 
 }
