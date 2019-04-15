@@ -7,9 +7,9 @@
 		<artifactId>common-service-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>kafka-messaging</artifactId>
+	<artifactId>kafka-messaging-util</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Kafka messaging</name>
+	<name>Kafka messaging util</name>
 	<description>Common utilty project to connect to kafka</description>
 	<dependencies>
 		<dependency>

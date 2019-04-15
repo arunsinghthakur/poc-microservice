@@ -10,7 +10,8 @@
 	<modules>
 		<module>common-service-pom</module>
 		<module>common-util</module>
-		<module>kafka-messaging</module>
+		<module>kafka-messaging-util</module>
+		<module>redis-cache-util</module>
 		<module>contract-service</module>
 		<module>booking-service</module>
 		
