@@ -60,7 +60,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.safexpress.propeli</groupId>
-			<artifactId>kafka-messaging</artifactId>
+			<artifactId>kafka-messaging-util</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

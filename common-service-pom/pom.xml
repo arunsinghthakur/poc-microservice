@@ -24,7 +24,8 @@
 		<postgres.version>42.2.5</postgres.version>
 		<logback.version>1.2.3</logback.version>
 		<common-util.version>0.0.1-SNAPSHOT</common-util.version>
-		<kafka-messaging.version>0.0.1-SNAPSHOT</kafka-messaging.version>
+		<kafka-messaging-util.version>0.0.1-SNAPSHOT</kafka-messaging-util.version>
+		<redis-cache-util.version>0.0.1-SNAPSHOT</redis-cache-util.version>
 		<modelmapper.version>2.3.2</modelmapper.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -138,8 +139,13 @@
 			</dependency>
 			<dependency>
 				<groupId>com.safexpress.propeli</groupId>
-				<artifactId>kafka-messaging</artifactId>
-				<version>${kafka-messaging.version}</version>
+				<artifactId>kafka-messaging-util</artifactId>
+				<version>${kafka-messaging-util.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.safexpress.propeli</groupId>
+				<artifactId>redis-cache-util</artifactId>
+				<version>${redis-cache-util.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
