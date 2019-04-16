@@ -50,6 +50,8 @@ public class ContractServiceImpl implements ContractService {
 		List<ContractEntity> contractEntities = contractCacheManager.findAll();
 		if (null == contractEntities || contractEntities.isEmpty()) {
 			contractEntities = contractRepository.findAll();
+
+			contractEntities.parallelStream().forEach(ce -> contractCacheManager.save(ce));
 		}
 		return contractEntities.stream().map(con -> createContract(con)).collect(Collectors.toList());
 	}
