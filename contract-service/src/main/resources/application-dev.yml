@@ -11,6 +11,38 @@ app:
       connection-timeout: ${HIKARI_CONNECTION_TIMEOUT:30000}
       pool-name: ${HIKARI_POOL_NAME:contract-hikari-cp}
       idle-timeout: ${HIKARI_IDLE_TIMEOUT:600000}
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: true
+      hbm2ddl:
+        auto: update
+      cache:
+        use_second_level_cache: false
+        use_query_cache: false   
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    password: ${REDIS_PASSWORD:}
+    port: ${REDIS_PORT:6379}
+
+
+kafka:
+  booking:
+    producer:
+      bootstrapServers: ${KAFKA_PRODUCER_SERVERS_HOST:http://localhost:9092}
+      topic:
+        name: ${KAFKA_PRODUCER_TOPIC_NAME:booking-request} 
+        replication-factor: ${KAFKA_PRODUCER_REPLICATION_FACTOR:1}
+        partitions: ${KAFKA_PRODUCER_PARTITIONS:1}
+        key-serializer: ${KAFKA_PRODUCER_KEY_SERIALIZER:org.apache.kafka.common.serialization.StringSerializer}
+        value-serializer: ${KAFKA_PRODUCER_VALUE_SERIALIZER:com.safexpress.propeli.booking.serialization.BookingSerializer}
+    consumer:
+      bootstrapServers: ${KAFKA_CONSUMER_SERVERS_HOST:http://localhost:9092}
+      topic: 
+        name: ${KAFKA_CONSUMER_TOPIC_NAME:booking-response}
+        groupid: ${KAFKA_CONSUMER_TOPIC_GROUP_ID:booking-group}
+        key-deserializer: ${KAFKA_CONSUMER_KEY_DESERIALIZER:org.apache.kafka.common.serialization.StringDeserializer}
+        value-deserializer: ${KAFKA_CONSUMER_VALUE_DESERIALIZER:com.safexpress.propeli.booking.serialization.BookingDeserializer}
+                 
     
 management:
   endpoints:
@@ -28,6 +60,7 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  
 
-booking:
-  service:
-    url: ${BOOKING_SERVICE_URL:http://localhost:9001}      
+booking-service:
+  url: ${BOOKING_SERVICE_URL:http://localhost:9001/booking} 
+  
+  

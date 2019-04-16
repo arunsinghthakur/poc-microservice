@@ -18,7 +18,7 @@ app:
         use_second_level_cache: false
         use_query_cache: false   
   redis:
-    host: ${REDIS_HOST:http://localhost}
+    host: ${REDIS_HOST:127.0.0.1}
     password: ${REDIS_PASSWORD:}
     port: ${REDIS_PORT:6379}
 
