@@ -1,4 +1,4 @@
-package com.safexpress.propeli.booking.integration.configuration;
+package com.safexpress.propeli.booking.integration.kafka.configuration;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

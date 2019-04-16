@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import com.safexpress.propeli.booking.domain.BookingRequest;
 import com.safexpress.propeli.contract.dao.ContractRepository;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.contract.entity.ContractEntity;
 import com.safexpress.propeli.contract.integration.redis.ContractCacheManager;
 import com.safexpress.propeli.messaging.consumer.AbstractMessageConsumer;

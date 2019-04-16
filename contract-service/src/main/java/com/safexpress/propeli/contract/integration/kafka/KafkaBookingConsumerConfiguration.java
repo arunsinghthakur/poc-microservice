@@ -8,7 +8,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 
-import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.messaging.configuration.AbstractKafkaConsumerConfig;
 
 @Configuration

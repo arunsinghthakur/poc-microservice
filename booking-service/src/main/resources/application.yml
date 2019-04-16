@@ -10,11 +10,11 @@ kafka:
         replication-factor: 1
         partitions: 1
         key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: com.safexpress.propeli.booking.serialization.BookingSerializer
+        value-serializer: com.safexpress.propeli.booking.integration.kafka.configuration.BookingSerializer
     consumer:
       bootstrapServers: http://localhost:9092
       topic: 
         name: booking-request
         groupid: booking-group
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: com.safexpress.propeli.booking.serialization.BookingDeserializer
+        value-deserializer: com.safexpress.propeli.booking.integration.kafka.configuration.BookingDeserializer

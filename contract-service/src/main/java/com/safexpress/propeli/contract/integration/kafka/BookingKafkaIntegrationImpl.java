@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.contract.integration.BookingIntegration;
 import com.safexpress.propeli.messaging.publisher.AbstractMessagePublisher;
 

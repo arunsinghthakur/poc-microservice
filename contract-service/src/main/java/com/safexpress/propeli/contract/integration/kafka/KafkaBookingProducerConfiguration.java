@@ -9,7 +9,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.messaging.configuration.AbstractKafkaProducerConfig;
 
 @Configuration

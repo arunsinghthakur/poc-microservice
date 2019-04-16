@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.safexpress.propeli.booking.domain.BookingRequest;
 import com.safexpress.propeli.contract.dao.ContractRepository;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.contract.domain.Contract;
 import com.safexpress.propeli.contract.entity.ContractEntity;
 import com.safexpress.propeli.contract.integration.BookingIntegration;

@@ -11,7 +11,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.contract.integration.BookingIntegration;
 
 @Service("bookingRestIntegration")

@@ -1,4 +1,4 @@
-package com.safexpress.propeli.booking.integration.impl;
+package com.safexpress.propeli.booking.integration.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,6 +8,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.safexpress.propeli.booking.domain.BookingRequest;
+import com.safexpress.propeli.booking.integration.BookingIntegration;
 
 @Service("bookingKafkaIntegration")
 public class BookingKafkaIntegrationImpl implements BookingIntegration {
