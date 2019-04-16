@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.safexpress.propeli.contract.domain.BookingRequest;
 import com.safexpress.propeli.contract.integration.BookingIntegration;
 
@@ -24,7 +23,6 @@ public class BookingRestIntegrationImpl implements BookingIntegration {
 	private Environment env;
 
 	@Override
-	@HystrixCommand(fallbackMethod = "getBookingFallback", commandKey = "BOOKING-INTERGRATION")
 	public Optional<String> getBooking() {
 		try {
 			return Optional
@@ -34,11 +32,6 @@ public class BookingRestIntegrationImpl implements BookingIntegration {
 			// TODO Use custom exception here and throw that.
 		}
 		return Optional.empty();
-	}
-
-	private Optional<String> getBookingFallback() {
-		// TODO Add some logger here.
-		return Optional.of("Booking service is down. This is dummy response from fallback service.");
 	}
 
 	@Override

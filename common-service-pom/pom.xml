@@ -19,7 +19,6 @@
 		<java.version>1.8</java.version>
 		<springboot.version>2.1.4.RELEASE</springboot.version>
 		<spring-kafka.version>2.2.5.RELEASE</spring-kafka.version>
-		<hystrix.version>2.1.0.RELEASE</hystrix.version>
 		<junit.version>4.12</junit.version>
 		<postgres.version>42.2.5</postgres.version>
 		<logback.version>1.2.3</logback.version>
@@ -86,22 +85,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-				<version>${hystrix.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
-				<version>${hystrix.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-devtools</artifactId>
-				<version>${springboot.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
