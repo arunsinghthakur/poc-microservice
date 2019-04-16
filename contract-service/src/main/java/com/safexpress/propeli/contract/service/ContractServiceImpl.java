@@ -13,6 +13,7 @@ import com.safexpress.propeli.contract.dao.ContractRepository;
 import com.safexpress.propeli.contract.domain.Contract;
 import com.safexpress.propeli.contract.entity.ContractEntity;
 import com.safexpress.propeli.contract.integration.BookingIntegration;
+import com.safexpress.propeli.contract.integration.redis.ContractCacheManager;
 
 @Service
 @Transactional
@@ -29,6 +30,10 @@ public class ContractServiceImpl implements ContractService {
 	@Qualifier("bookingKafkaIntegration")
 	private BookingIntegration bookingKafkaIntegration;
 
+	@Autowired
+	@Qualifier("contractCacheManager")
+	private ContractCacheManager contractCacheManager;
+
 	@Override
 	@Transactional
 	public void addContract(Contract contract) {
@@ -36,12 +41,16 @@ public class ContractServiceImpl implements ContractService {
 		ContractEntity contractEntity = new ContractEntity();
 		contractEntity.setDescription(contract.getDescription() + bookingMsg);
 		contractRepository.save(contractEntity);
+		contractCacheManager.save(contractEntity);
 	}
 
 	@Override
 	@Transactional
 	public List<Contract> getAllContract() {
-		List<ContractEntity> contractEntities = contractRepository.findAll();
+		List<ContractEntity> contractEntities = contractCacheManager.findAll();
+		if (null == contractEntities || contractEntities.isEmpty()) {
+			contractEntities = contractRepository.findAll();
+		}
 		return contractEntities.stream().map(con -> createContract(con)).collect(Collectors.toList());
 	}
 
@@ -59,6 +68,7 @@ public class ContractServiceImpl implements ContractService {
 		ContractEntity contractEntity = new ContractEntity();
 		contractEntity.setDescription(contract.getDescription());
 		contractRepository.save(contractEntity);
+		contractCacheManager.save(contractEntity);
 	}
 
 }

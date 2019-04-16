@@ -4,58 +4,59 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
-public class AbstractCacheManager<T> implements CacheManager<T> {
+public abstract class AbstractCacheManager<T> implements CacheManager<T> {
 
 	@Autowired
-	@Lazy
-	private RedisTemplate<String, T> redisTemplate;
+	@Qualifier("redisTemplate")
+	private RedisTemplate<Object, Object> redisTemplate;
 
 	@Override
-	public void putMap(String redisKey, Object key, T data) {
+	public void putMap(Object redisKey, Object key, T data) {
 		getHashOperation().put(redisKey, key, data);
 	}
 
 	@Override
-	public T getMapAsSingleEntry(String redisKey, Object key) {
+	public T getMapAsSingleEntry(Object redisKey, Object key) {
 		return getHashOperation().get(redisKey, key);
 	}
 
 	@Override
-	public Map<Object, T> getMapAsAll(String redisKey) {
+	public Map<Object, T> getMapAsAll(Object redisKey) {
 		return getHashOperation().entries(redisKey);
 	}
 
 	@Override
-	public void putValue(String key, T value) {
+	public void putValue(Object key, T value) {
 		getValueOperations().set(key, value);
 	}
 
 	@Override
-	public void putValueWithExpireTime(String key, T value, long timeout, TimeUnit unit) {
+	public void putValueWithExpireTime(Object key, T value, long timeout, TimeUnit unit) {
 		getValueOperations().set(key, value, timeout, unit);
 	}
 
 	@Override
-	public T getValue(String key) {
+	public T getValue(Object key) {
 		return getValueOperations().get(key);
 	}
 
 	@Override
-	public void setExpire(String key, long timeout, TimeUnit unit) {
+	public void setExpire(Object key, long timeout, TimeUnit unit) {
 		redisTemplate.expire(key, timeout, unit);
 	}
 
-	private HashOperations<String, Object, T> getHashOperation() {
+	private HashOperations<Object, Object, T> getHashOperation() {
 		return redisTemplate.opsForHash();
 	}
 
-	private ValueOperations<String, T> getValueOperations() {
-		return redisTemplate.opsForValue();
+	private ValueOperations<Object, T> getValueOperations() {
+		redisTemplate.opsForValue();
+		return null;
 	}
 
 }

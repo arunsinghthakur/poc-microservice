@@ -5,17 +5,17 @@ import java.util.concurrent.TimeUnit;
 
 public interface CacheManager<T> {
 
-	void setExpire(String key, long timeout, TimeUnit unit);
+	void setExpire(Object key, long timeout, TimeUnit unit);
 
-	T getValue(String key);
+	T getValue(Object key);
 
-	void putValueWithExpireTime(String key, T value, long timeout, TimeUnit unit);
+	void putValueWithExpireTime(Object key, T value, long timeout, TimeUnit unit);
 
-	void putValue(String key, T value);
+	void putValue(Object key, T value);
 
-	Map<Object, T> getMapAsAll(String redisKey);
+	Map<Object, T> getMapAsAll(Object redisKey);
 
-	T getMapAsSingleEntry(String redisKey, Object key);
+	T getMapAsSingleEntry(Object redisKey, Object key);
 
-	void putMap(String redisKey, Object key, T data);
+	void putMap(Object redisKey, Object key, T data);
 }

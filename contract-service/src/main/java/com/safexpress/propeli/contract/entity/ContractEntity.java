@@ -13,7 +13,11 @@ import javax.persistence.Table;
 @Table(name = "contract")
 public class ContractEntity implements Serializable {
 
-	private static final Long serialVersionUID = -304423748041963147L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -491760812366942815L;
+
 
 	@Id
 	@Column(name = "contractid")
