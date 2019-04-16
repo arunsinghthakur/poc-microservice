@@ -5,13 +5,12 @@ import java.util.HashMap;
 import javax.sql.DataSource;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -28,24 +27,42 @@ import com.zaxxer.hikari.HikariDataSource;
 		"com.safexpress.propeli" }, entityManagerFactoryRef = "entityManager", transactionManagerRef = "transactionManager")
 public class AppConfiguration {
 
-	@Autowired
-	Environment env;
+	@Value(value = "${app.datasource.driverClassName}")
+	private String driverClassName;
+	@Value(value = "${app.datasource.url}")
+	private String databaseUrl;
+	@Value(value = "${app.datasource.username}")
+	private String databaseUsername;
+	@Value(value = "${app.datasource.password}")
+	private String databasePassword;
+	@Value(value = "${app.datasource.hikari.connection-timeout}")
+	private long hikariTimeout;
+	@Value(value = "${app.datasource.hikari.pool-name}")
+	private String hikariPoolName;
+	@Value(value = "${app.datasource.hikari.idle-timeout}")
+	private long hikariIdleTimeout;
+	@Value(value = "${app.datasource.hibernate.hbm2ddl.auto}")
+	private String hibernatehbm2ddl;
+	@Value(value = "${app.datasource.hibernate.dialect}")
+	private String hibernateDialect;
+	@Value(value = "${app.datasource.hibernate.show_sql}")
+	private String showSql;
 
 	@Bean
 	@Primary
 	public DataSource dataSource() {
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("app.datasource.driverClassName"));
-		dataSource.setUrl(env.getProperty("app.datasource.url"));
-		dataSource.setUsername(env.getProperty("app.datasource.username"));
-		dataSource.setPassword(env.getProperty("app.datasource.password"));
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(databaseUrl);
+		dataSource.setUsername(databaseUsername);
+		dataSource.setPassword(databasePassword);
 
 		HikariDataSource hikariDataSource = new HikariDataSource();
 		hikariDataSource.setDataSource(dataSource);
-		hikariDataSource.setIdleTimeout(Long.parseLong(env.getProperty("app.datasource.hikari.connection-timeout")));
-		hikariDataSource.setPoolName(env.getProperty("app.datasource.hikari.pool-name"));
-		hikariDataSource.setConnectionTimeout(Long.parseLong(env.getProperty("app.datasource.hikari.idle-timeout")));
+		hikariDataSource.setIdleTimeout(hikariIdleTimeout);
+		hikariDataSource.setPoolName(hikariPoolName);
+		hikariDataSource.setConnectionTimeout(hikariTimeout);
 
 		return hikariDataSource;
 	}
@@ -60,9 +77,9 @@ public class AppConfiguration {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		HashMap<String, Object> properties = new HashMap<>();
-		properties.put("hibernate.hbm2ddl.auto", env.getProperty("app.hibernate.hbm2ddl.auto"));
-		properties.put("hibernate.dialect", env.getProperty("app.hibernate.dialect"));
-		properties.put("hibernate.show_sql", env.getProperty("app.hibernate.show_sql"));
+		properties.put("hibernate.hbm2ddl.auto", hibernatehbm2ddl);
+		properties.put("hibernate.dialect", hibernateDialect);
+		properties.put("hibernate.show_sql", showSql);
 		em.setJpaPropertyMap(properties);
 
 		return em;
