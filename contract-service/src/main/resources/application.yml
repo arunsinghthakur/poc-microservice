@@ -1,6 +1,8 @@
+# Application server port
 server:
   port: 9000
-  
+
+# Database configuration  
 app:
   datasource:    url: ${DATABASE_HOST_URL:jdbc:postgresql://localhost:5432/contract}
     username: ${DATABASE_USERNAME:postgres}
@@ -16,13 +18,15 @@ app:
         auto: update
       cache:
         use_second_level_cache: false
-        use_query_cache: false   
+        use_query_cache: false
+        
+# Redis cache configuration           
   redis:
     host: ${REDIS_HOST:127.0.0.1}
     password: ${REDIS_PASSWORD:admin}
     port: ${REDIS_PORT:6379}
 
-
+# Kafka producer and consumer configuration
 kafka:
   booking:
     producer:
@@ -41,12 +45,13 @@ kafka:
         key-deserializer: ${KAFKA_CONSUMER_KEY_DESERIALIZER:org.apache.kafka.common.serialization.StringDeserializer}
         value-deserializer: ${KAFKA_CONSUMER_VALUE_DESERIALIZER:com.safexpress.propeli.contract.integration.kafka.BookingDeserializer}
                  
-    management:
+# Actuator enpoint management    management:
   endpoints:
     web:
       exposure:
         include: "*"
-    
+        
+# Log setting    
 logging:
   path: logs  level:    root: WARN
     com.safexpress.propeli: INFO
@@ -55,6 +60,7 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  
 
+# Other microservice url configuration
 booking-service:
   url: ${BOOKING_SERVICE_URL:http://localhost:9001/booking} 
   
