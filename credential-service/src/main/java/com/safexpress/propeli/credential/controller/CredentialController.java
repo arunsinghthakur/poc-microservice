@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safexpress.propeli.common.controller.AbstractController;
-import com.safexpress.propeli.credential.dto.TokenDto;
 import com.safexpress.propeli.credential.dto.UserDto;
 import com.safexpress.propeli.credential.service.CredentialService;
 
@@ -20,7 +19,7 @@ public class CredentialController extends AbstractController<UserDto> {
 
 	@PostMapping(consumes = { "application/vnd.com.safexpress.propeli.credential-v1+json" }, produces = {
 			"application/vnd.com.safexpress.propeli.credential-v1+json" })
-	public TokenDto authtenticate(@RequestBody UserDto userDto) {
+	public String authtenticate(@RequestBody UserDto userDto) {
 		return null;
 	}
 
