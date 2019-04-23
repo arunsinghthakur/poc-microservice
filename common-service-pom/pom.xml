@@ -19,12 +19,14 @@
 		<java.version>1.8</java.version>
 		<springboot.version>2.1.4.RELEASE</springboot.version>
 		<spring-kafka.version>2.2.5.RELEASE</spring-kafka.version>
+		<apache.shiro.version>1.4.0</apache.shiro.version>
 		<junit.version>4.12</junit.version>
 		<postgres.version>42.2.5</postgres.version>
 		<logback.version>1.2.3</logback.version>
 		<common-util.version>0.0.1-SNAPSHOT</common-util.version>
 		<kafka-messaging-util.version>0.0.1-SNAPSHOT</kafka-messaging-util.version>
 		<redis-cache-util.version>0.0.1-SNAPSHOT</redis-cache-util.version>
+		<security-util.version>0.0.1-SNAPSHOT</security-util.version>
 		<modelmapper.version>2.3.2</modelmapper.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -93,6 +95,13 @@
 				<scope>test</scope>
 			</dependency>
 
+			<!--Apache shiro security -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring-boot-web-starter</artifactId>
+				<version>${apache.shiro.version}</version>
+			</dependency>
+
 			<!-- Database dependencies -->
 			<dependency>
 				<groupId>org.postgresql</groupId>
@@ -129,6 +138,11 @@
 				<groupId>com.safexpress.propeli</groupId>
 				<artifactId>redis-cache-util</artifactId>
 				<version>${redis-cache-util.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.safexpress.propeli</groupId>
+				<artifactId>security-util</artifactId>
+				<version>${security-util.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

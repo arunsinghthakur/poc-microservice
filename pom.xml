@@ -12,6 +12,8 @@
 		<module>common-util</module>
 		<module>kafka-messaging-util</module>
 		<module>redis-cache-util</module>
+		<module>security-util</module>
+		<module>credential-service</module>
 		<module>contract-service</module>
 		<module>booking-service</module>
 		

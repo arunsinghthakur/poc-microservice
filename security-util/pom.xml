@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.safexpress.propeli</groupId>
+		<artifactId>common-service-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>security-util</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Security Utility</name>
+	<description>security utility containing common code</description>
+
+	<dependencies>
+		<!-- Apache shiro security -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-web-starter</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.safexpress.propeli</groupId>
+			<artifactId>redis-cache-util</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+</project>

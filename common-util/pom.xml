@@ -11,6 +11,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Common Utility</name>
 	<description>Common utility containing common code</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 	</build>
