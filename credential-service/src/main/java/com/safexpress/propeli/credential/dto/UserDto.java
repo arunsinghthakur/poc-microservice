@@ -11,7 +11,6 @@ public class UserDto implements Serializable {
 	private long userId;
 	private String emailAddress;
 	private String password;
-	private String salt;
 	private Set<RoleDto> roles;
 
 	public long getUserId() {
@@ -36,14 +35,6 @@ public class UserDto implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
 	}
 
 	public Set<RoleDto> getRoles() {

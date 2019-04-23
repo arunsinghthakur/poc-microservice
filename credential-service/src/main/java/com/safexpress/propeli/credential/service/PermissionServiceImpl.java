@@ -1,18 +1,27 @@
 package com.safexpress.propeli.credential.service;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.safexpress.propeli.credential.dao.PermissionRepository;
 import com.safexpress.propeli.credential.domain.Permission;
+import com.safexpress.propeli.credential.entity.PermissionEntity;
 
 @Service
 @Transactional
 public class PermissionServiceImpl implements PermissionService {
 
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PermissionRepository permissionRepository;
+	
 	@Override
 	public long savePermission(Permission permission) {
-		// TODO Auto-generated method stub
-		return 0;
+		return permissionRepository.save(modelMapper.map(permission, PermissionEntity.class)).getPermissionId();
 	}
 
 }

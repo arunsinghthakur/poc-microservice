@@ -1,18 +1,27 @@
 package com.safexpress.propeli.credential.service;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.safexpress.propeli.credential.dao.RoleRepository;
 import com.safexpress.propeli.credential.domain.Role;
+import com.safexpress.propeli.credential.entity.RoleEntity;
 
 @Service
 @Transactional
 public class RoleServiceImpl implements RoleService {
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Override
 	public long saveRole(Role role) {
-		// TODO Auto-generated method stub
-		return 0;
+		return roleRepository.save(modelMapper.map(role, RoleEntity.class)).getRoleId();
 	}
 
 }
