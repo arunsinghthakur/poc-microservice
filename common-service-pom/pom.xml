@@ -20,6 +20,7 @@
 		<springboot.version>2.1.4.RELEASE</springboot.version>
 		<spring-kafka.version>2.2.5.RELEASE</spring-kafka.version>
 		<apache.shiro.version>1.4.0</apache.shiro.version>
+		<jwt.version>0.9.1</jwt.version>
 		<junit.version>4.12</junit.version>
 		<postgres.version>42.2.5</postgres.version>
 		<logback.version>1.2.3</logback.version>
@@ -114,6 +115,13 @@
 				<groupId>org.modelmapper</groupId>
 				<artifactId>modelmapper</artifactId>
 				<version>${modelmapper.version}</version>
+			</dependency>
+
+			<!-- JWT -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
 			</dependency>
 
 			<!-- logger -->

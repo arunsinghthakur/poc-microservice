@@ -8,9 +8,9 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-public class SecurityUtil {
+public final class PasswordUtil {
 
-	private SecurityUtil() {
+	private PasswordUtil() {
 	}
 
 	public static String encryptedPassword(String password, String salt) {

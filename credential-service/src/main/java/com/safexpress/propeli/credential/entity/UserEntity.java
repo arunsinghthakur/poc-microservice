@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "employee")
 public class UserEntity implements Serializable {
 	/**
 	 * 
@@ -24,9 +24,9 @@ public class UserEntity implements Serializable {
 	private static final long serialVersionUID = -2943278939534238661L;
 
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "employee_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userId;
+	private long employeeId;
 
 	@Column(name = "email")
 	private String emailAddress;
@@ -38,16 +38,16 @@ public class UserEntity implements Serializable {
 	private String salt;
 
 	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+	@JoinTable(name = "employee_role", joinColumns = { @JoinColumn(name = "employee_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })
 	private Set<RoleEntity> roles = new HashSet<RoleEntity>();
 
-	public long getUserId() {
-		return userId;
+	public long getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getEmailAddress() {

@@ -14,14 +14,20 @@
 
 	<dependencies>
 		<!-- Apache shiro security -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring-boot-web-starter</artifactId>
-		</dependency>
-		
+		</dependency> -->
+
 		<dependency>
 			<groupId>com.safexpress.propeli</groupId>
 			<artifactId>redis-cache-util</artifactId>
+		</dependency>
+
+		<!-- JWT -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

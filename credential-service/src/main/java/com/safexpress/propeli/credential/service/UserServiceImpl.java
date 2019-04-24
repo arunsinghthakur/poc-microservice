@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.safexpress.propeli.credential.dao.UserRepository;
 import com.safexpress.propeli.credential.domain.User;
 import com.safexpress.propeli.credential.entity.UserEntity;
-import com.safexpress.propeli.security.util.SecurityUtil;
+import com.safexpress.propeli.security.util.PasswordUtil;
 
 @Service
 @Transactional
@@ -22,9 +22,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public long saveUser(User user) {
-		user.setSalt(SecurityUtil.generateSalt());
-		user.setPassword(SecurityUtil.encryptedPassword(user.getPassword(), user.getSalt()));
-		return userRepository.save(modelMapper.map(user, UserEntity.class)).getUserId();
+		user.setSalt(PasswordUtil.generateSalt());
+		user.setPassword(PasswordUtil.encryptedPassword(user.getPassword(), user.getSalt()));
+		return userRepository.save(modelMapper.map(user, UserEntity.class)).getEmployeeId();
 	}
 
 }

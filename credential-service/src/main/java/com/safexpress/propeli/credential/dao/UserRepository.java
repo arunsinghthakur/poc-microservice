@@ -10,6 +10,6 @@ import com.safexpress.propeli.credential.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-	@Query(value = "select * from UserEntity u where u.emailAddress = :email")
+	@Query(value = "select * from UserEntity u where u.emailAddress = :email" , nativeQuery = true)
 	public UserEntity findUserByEmail(@Param("email") String email);
 }
