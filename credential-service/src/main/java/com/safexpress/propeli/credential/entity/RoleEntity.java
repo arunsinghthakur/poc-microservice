@@ -30,7 +30,7 @@ public class RoleEntity implements Serializable {
 	private String roleName;
 	
 	@ManyToMany(mappedBy = "roles")
-	private Set<UserEntity> users = new HashSet<UserEntity>();
+	private Set<EmployeeEntity> employees = new HashSet<EmployeeEntity>();
 
 	public long getRoleId() {
 		return roleId;
@@ -48,12 +48,12 @@ public class RoleEntity implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public Set<UserEntity> getUsers() {
-		return users;
+	public Set<EmployeeEntity> getEmployees() {
+		return employees;
 	}
 
-	public void setUsers(Set<UserEntity> users) {
-		this.users = users;
+	public void setEmployees(Set<EmployeeEntity> employees) {
+		this.employees = employees;
 	}
 
 }

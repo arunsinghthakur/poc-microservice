@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.safexpress.propeli.credential.dao.UserRepository;
-import com.safexpress.propeli.credential.domain.User;
-import com.safexpress.propeli.credential.entity.UserEntity;
+import com.safexpress.propeli.credential.dao.EmployeeRepository;
+import com.safexpress.propeli.credential.domain.Employee;
+import com.safexpress.propeli.credential.entity.EmployeeEntity;
 import com.safexpress.propeli.security.util.PasswordUtil;
 
 @Service
@@ -15,23 +15,22 @@ import com.safexpress.propeli.security.util.PasswordUtil;
 public class CredentialServiceImpl implements CredentialService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private EmployeeRepository employeeRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
-	public String authenticate(User user) {
-		UserEntity userEntity = userRepository.findUserByEmail(user.getEmailAddress());
-		if (null != userEntity) {
-			String inputEncryptedPwd = PasswordUtil.encryptedPassword(user.getPassword(), userEntity.getSalt());
-			if (userEntity.getPassword().equals(inputEncryptedPwd)) {
-				// Token process
+	public boolean isAuthenticated(Employee employee) {
+		EmployeeEntity employeeEntity = employeeRepository.findUserByUsername(employee.getUsername());
+		if (null != employeeEntity) {
+			String inputEncryptedPwd = PasswordUtil.encryptedPassword(employee.getPassword(), employeeEntity.getSalt());
+			if (employeeEntity.getPassword().equals(inputEncryptedPwd)) {
+				return true;
 			}
-			//throw exception
 		}
 
-		return null;
+		return false;
 	}
 
 }

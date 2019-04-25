@@ -1,5 +1,8 @@
 package com.safexpress.propeli.credential.service;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,12 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
 	@Override
 	public long saveResourcePermission(ResourcePermission resourcePermission) {
 		return permissionRepository.save(modelMapper.map(resourcePermission, ResourcePermissionEntity.class)).getResourcePermissionId();
+	}
+	
+	@Override
+	public Set<ResourcePermission> findResourcePermissionsByRoleId(long roleId) {
+		return permissionRepository.findResourcePermissionsByRoleId(roleId).stream()
+				.map(r -> modelMapper.map(r, ResourcePermission.class)).collect(Collectors.toSet());
 	}
 
 }

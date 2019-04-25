@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safexpress.propeli.common.controller.AbstractController;
-import com.safexpress.propeli.credential.dto.UserDto;
-import com.safexpress.propeli.credential.service.UserService;
+import com.safexpress.propeli.credential.dto.EmployeeDto;
+import com.safexpress.propeli.credential.service.EmployeeService;
 
 @RestController
 @RequestMapping("/user")
-public class UserController extends AbstractController<UserDto> {
+public class EmployeeController extends AbstractController<EmployeeDto> {
 
 	@Autowired
-	private UserService service;
+	private EmployeeService service;
 
 	@PostMapping(consumes = { "application/vnd.com.safexpress.propeli.user-v1+json" }, produces = {
 			"application/vnd.com.safexpress.propeli.user-v1+json" })
-	public String saveUser(@RequestBody UserDto userDto) {
+	public String saveUser(@RequestBody EmployeeDto userDto) {
 		return "Persisted successfully.";
 	}
 

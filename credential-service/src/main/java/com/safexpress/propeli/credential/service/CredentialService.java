@@ -1,7 +1,8 @@
 package com.safexpress.propeli.credential.service;
 
-import com.safexpress.propeli.credential.domain.User;
+import com.safexpress.propeli.credential.domain.Employee;
 
 public interface CredentialService {
-	String authenticate(User user);
+	boolean isAuthenticated(Employee employee);
+
 }

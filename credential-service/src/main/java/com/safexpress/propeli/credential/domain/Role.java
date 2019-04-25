@@ -11,7 +11,7 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = -8682742874854129114L;
 	private long roleId;
 	private String roleName;
-	private Set<User> users;
+	private Set<Employee> users;
 
 	public long getRoleId() {
 		return roleId;
@@ -29,11 +29,11 @@ public class Role implements Serializable {
 		this.roleName = roleName;
 	}
 
-	public Set<User> getUsers() {
+	public Set<Employee> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(Set<Employee> users) {
 		this.users = users;
 	}
 

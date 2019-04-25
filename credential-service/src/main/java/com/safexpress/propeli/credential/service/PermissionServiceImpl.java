@@ -1,5 +1,7 @@
 package com.safexpress.propeli.credential.service;
 
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +17,19 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private PermissionRepository permissionRepository;
-	
+
 	@Override
 	public long savePermission(Permission permission) {
 		return permissionRepository.save(modelMapper.map(permission, PermissionEntity.class)).getPermissionId();
+	}
+
+	@Override
+	public Permission findPermissionById(long permissionId) {
+		Optional<PermissionEntity> permission = permissionRepository.findById(permissionId);
+		return modelMapper.map(permission.get(), Permission.class);
 	}
 
 }

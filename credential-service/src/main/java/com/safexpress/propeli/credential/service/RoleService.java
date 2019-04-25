@@ -6,4 +6,5 @@ public interface RoleService {
 
 	long saveRole(Role role);
 
+	Role findRoleById(long roleId);
 }

@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
-public class UserEntity implements Serializable {
+public class EmployeeEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -27,6 +27,9 @@ public class UserEntity implements Serializable {
 	@Column(name = "employee_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long employeeId;
+	
+	@Column(name = "username")
+	private String username;
 
 	@Column(name = "email")
 	private String emailAddress;
@@ -48,6 +51,14 @@ public class UserEntity implements Serializable {
 
 	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmailAddress() {

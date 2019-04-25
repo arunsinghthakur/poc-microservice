@@ -6,4 +6,6 @@ public interface ResourceService {
 
 	long saveResource(Resource resource);
 
+	Resource findResourceById(long resourceId);
+
 }

@@ -3,22 +3,31 @@ package com.safexpress.propeli.credential.dto;
 import java.io.Serializable;
 import java.util.Set;
 
-public class UserDto implements Serializable {
+public class EmployeeDto implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2943278939534238661L;
-	private long userId;
+	private long employeeId;
+	private String username;
 	private String emailAddress;
 	private String password;
 	private Set<RoleDto> roles;
 
-	public long getUserId() {
-		return userId;
+	public long getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmailAddress() {
