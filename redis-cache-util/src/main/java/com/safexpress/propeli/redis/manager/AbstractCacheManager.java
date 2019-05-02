@@ -1,6 +1,8 @@
 package com.safexpress.propeli.redis.manager;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +48,23 @@ public abstract class AbstractCacheManager<T> implements CacheManager<T> {
 	}
 
 	@Override
+	public List<T> getMultiValues(Set<Object> keys) {
+		return getValueOperations().multiGet(keys);
+	}
+
+	@Override
 	public void setExpire(Object key, long timeout, TimeUnit unit) {
 		redisTemplate.expire(key, timeout, unit);
+	}
+
+	@Override
+	public Set<Object> getKeysByRegex(String keyRegex) {
+		return redisTemplate.keys(keyRegex);
+	}
+
+	@Override
+	public void deleteKeys(Set<Object> keys) {
+		redisTemplate.delete(keys);
 	}
 
 	private HashOperations<Object, Object, T> getHashOperation() {
@@ -55,8 +72,7 @@ public abstract class AbstractCacheManager<T> implements CacheManager<T> {
 	}
 
 	private ValueOperations<Object, T> getValueOperations() {
-		redisTemplate.opsForValue();
-		return null;
+		return (ValueOperations<Object, T>) redisTemplate.opsForValue();
 	}
 
 }

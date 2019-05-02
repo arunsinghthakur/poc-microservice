@@ -1,6 +1,8 @@
 package com.safexpress.propeli.redis.manager;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public interface CacheManager<T> {
@@ -8,6 +10,8 @@ public interface CacheManager<T> {
 	void setExpire(Object key, long timeout, TimeUnit unit);
 
 	T getValue(Object key);
+	
+	List<T> getMultiValues(Set<Object> keys);
 
 	void putValueWithExpireTime(Object key, T value, long timeout, TimeUnit unit);
 
@@ -18,4 +22,8 @@ public interface CacheManager<T> {
 	T getMapAsSingleEntry(Object redisKey, Object key);
 
 	void putMap(Object redisKey, Object key, T data);
+
+	Set<Object> getKeysByRegex(String keyRegex);
+
+	void deleteKeys(Set<Object> keys);
 }
