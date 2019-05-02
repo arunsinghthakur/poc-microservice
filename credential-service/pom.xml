@@ -70,10 +70,6 @@
 		<!-- Common util -->
 		<dependency>
 			<groupId>com.safexpress.propeli</groupId>
-			<artifactId>common-util</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.safexpress.propeli</groupId>
 			<artifactId>security-util</artifactId>
 		</dependency>
 	</dependencies>

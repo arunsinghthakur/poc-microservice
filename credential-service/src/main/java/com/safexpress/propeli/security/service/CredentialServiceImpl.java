@@ -34,7 +34,8 @@ public class CredentialServiceImpl implements CredentialService {
 		EmployeeEntity employeeEntity = employeeRepository.findUserByUsername(employee.getUsername());
 		if (null != employeeEntity) {
 			String inputEncryptedPwd = PasswordUtil.encryptedPassword(employee.getPassword(), employeeEntity.getSalt());
-			if (employeeEntity.getPassword().equals(inputEncryptedPwd)) {
+			String encryptedPwd = employeeEntity.getPassword();
+			if (encryptedPwd.trim().equals(inputEncryptedPwd.trim())) {
 				return true;
 			}
 		}

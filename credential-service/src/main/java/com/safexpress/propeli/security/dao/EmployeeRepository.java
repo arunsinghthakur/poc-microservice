@@ -10,6 +10,6 @@ import com.safexpress.propeli.security.entity.EmployeeEntity;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
 
-	@Query(value = "select * from EmployeeEntity u where u.username = :username" , nativeQuery = true)
+	@Query(value = "select u from EmployeeEntity u where u.username = :username")
 	public EmployeeEntity findUserByUsername(@Param("username") String username);
 }

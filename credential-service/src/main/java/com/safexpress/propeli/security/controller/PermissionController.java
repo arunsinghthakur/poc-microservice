@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.safexpress.propeli.common.controller.AbstractController;
 import com.safexpress.propeli.security.domain.Permission;
 import com.safexpress.propeli.security.dto.PermissionDto;
 import com.safexpress.propeli.security.service.PermissionService;
 
 @RestController
 @RequestMapping("/permission")
-public class PermissionController extends AbstractController<PermissionDto> {
+public class PermissionController {
 
 	@Autowired
 	private PermissionService service;
-	
+
 	@Autowired
 	private ModelMapper mapper;
 

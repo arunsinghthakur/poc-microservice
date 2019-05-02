@@ -29,7 +29,8 @@ public class CredentialCacheManagerImpl extends AbstractCacheManager<Object> imp
 		Cache<Object, Object> cache = (Cache<Object, Object>) cachesMap.get(name);
 
 		if (cache == null) {
-			cachesMap.put(name, new RedisCache(this, name));
+			cache = new RedisCache(this, name);
+			cachesMap.put(name, cache);
 		}
 		return cache;
 	}

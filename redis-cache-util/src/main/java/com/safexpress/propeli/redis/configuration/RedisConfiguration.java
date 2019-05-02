@@ -25,7 +25,7 @@ public class RedisConfiguration {
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
 		RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(hostname, port);
-		configuration.setPassword(password);
+		//configuration.setPassword(password);
 		JedisClientConfiguration jedisClientConfiguration = JedisClientConfiguration.builder().usePooling().build();
 		JedisConnectionFactory factory = new JedisConnectionFactory(configuration, jedisClientConfiguration);
 		factory.afterPropertiesSet();

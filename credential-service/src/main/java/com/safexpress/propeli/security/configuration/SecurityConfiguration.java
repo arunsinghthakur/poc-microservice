@@ -14,6 +14,7 @@ import org.apache.shiro.web.servlet.Cookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.safexpress.propeli.cache.manager.CredentialCacheManagerImpl;
 import com.safexpress.propeli.security.realm.SecurityRealm;
@@ -21,7 +22,8 @@ import com.safexpress.propeli.security.realm.SecurityRealm;
 @Configuration
 public class SecurityConfiguration {
 
-	@Bean
+	@Bean("redisCacheManager")
+	@Primary
 	public CacheManager cacheManager() {
 		return new CredentialCacheManagerImpl();
 	}

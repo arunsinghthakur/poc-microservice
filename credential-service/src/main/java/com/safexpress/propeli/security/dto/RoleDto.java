@@ -12,6 +12,7 @@ public class RoleDto implements Serializable {
 	private long roleId;
 	private String roleName;
 	private Set<EmployeeDto> users;
+	private Set<PermissionDto> permissions;
 
 	public long getRoleId() {
 		return roleId;
@@ -35,6 +36,14 @@ public class RoleDto implements Serializable {
 
 	public void setUsers(Set<EmployeeDto> users) {
 		this.users = users;
+	}
+
+	public Set<PermissionDto> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Set<PermissionDto> permissions) {
+		this.permissions = permissions;
 	}
 
 }

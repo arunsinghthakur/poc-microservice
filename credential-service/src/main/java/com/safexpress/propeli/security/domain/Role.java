@@ -12,6 +12,7 @@ public class Role implements Serializable {
 	private long roleId;
 	private String roleName;
 	private Set<Employee> users;
+	private Set<Permission> permissions;
 
 	public long getRoleId() {
 		return roleId;
@@ -35,6 +36,14 @@ public class Role implements Serializable {
 
 	public void setUsers(Set<Employee> users) {
 		this.users = users;
+	}
+
+	public Set<Permission> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Set<Permission> permissions) {
+		this.permissions = permissions;
 	}
 
 }

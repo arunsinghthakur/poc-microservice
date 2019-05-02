@@ -37,7 +37,7 @@ public final class PasswordUtil {
 			sr = SecureRandom.getInstance("SHA1PRNG");
 			byte[] salt = new byte[16];
 			sr.nextBytes(salt);
-			return new String(salt);
+			return toHex(salt);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +62,9 @@ public final class PasswordUtil {
 
 	public static void main(String[] args) {
 		String salt = generateSalt();
-		System.out.println(isPasswordMatch("joker", encryptedPassword("joker", salt), salt));
+		System.out.println(salt);
+		System.out.println(encryptedPassword("admin", salt));
+		// System.out.println(isPasswordMatch("joker", encryptedPassword("joker", salt),
+		// salt));
 	}
 }

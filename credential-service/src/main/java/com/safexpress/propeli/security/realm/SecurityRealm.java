@@ -22,28 +22,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safexpress.propeli.security.domain.Employee;
-import com.safexpress.propeli.security.domain.ResourcePermission;
 import com.safexpress.propeli.security.domain.Role;
 import com.safexpress.propeli.security.service.CredentialService;
 import com.safexpress.propeli.security.service.EmployeeService;
-import com.safexpress.propeli.security.service.PermissionService;
-import com.safexpress.propeli.security.service.ResourcePermissionService;
-import com.safexpress.propeli.security.service.ResourceService;
 
 @Service
 public class SecurityRealm extends JdbcRealm implements Authorizer {
 
 	@Autowired
 	private CredentialService credentialService;
-
-	@Autowired
-	private PermissionService permissionService;
-
-	@Autowired
-	private ResourcePermissionService resourcePermissionService;
-
-	@Autowired
-	private ResourceService resourceService;
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -104,13 +91,7 @@ public class SecurityRealm extends JdbcRealm implements Authorizer {
 	}
 
 	private Set<String> mapToPermission(Role role) {
-		Set<ResourcePermission> resourcePermissions = resourcePermissionService
-				.findResourcePermissionsByRoleId(role.getRoleId());
-
-		return resourcePermissions.stream()
-				.map(rp -> resourceService.findResourceById(rp.getResourceId()) + ":"
-						+ permissionService.findPermissionById(rp.getPermissionId()).getName())
-				.collect(Collectors.toSet());
+		return role.getPermissions().stream().map(p -> p.getName()).collect(Collectors.toSet());
 	}
 
 	private boolean isEmptyCredential(UsernamePasswordToken uToken) {

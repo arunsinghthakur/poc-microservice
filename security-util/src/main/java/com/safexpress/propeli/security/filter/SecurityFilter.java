@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,7 +21,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.safexpress.propeli.security.domain.CustomClaims;
 import com.safexpress.propeli.security.util.JWTUtil;
 
 import io.jsonwebtoken.Claims;
@@ -41,9 +41,9 @@ public class SecurityFilter implements Filter {
 		if (null != jwtToken) {
 			try {
 				Claims claims = JWTUtil.parseJWT(jwtToken);
-				CustomClaims customClaims = claims.get(JWTUtil.CUSTOM_CLAIM_KEY, CustomClaims.class);
+				LinkedHashMap map = (LinkedHashMap) claims.get(JWTUtil.CUSTOM_CLAIM_KEY);
 				MutableHttpServletRequest mutableRequest = new MutableHttpServletRequest(request);
-				mutableRequest.putHeader("JSESSIONID", customClaims.getJsessionid());
+				mutableRequest.putHeader("JSESSIONID", ((String) map.get("jsessionid")));
 				return mutableRequest;
 			} catch (Exception e) {
 				// add log.
